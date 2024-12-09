@@ -3,11 +3,14 @@
         "dev": "deno -A --watch index.ts",
         "dev-employee": "deno -A --watch employeeBot.ts"
     },
+
     "imports": {
       "api": "./api/index.ts",
       "types": "./types.ts",
       "keyboards": "./keyboards/index.ts",
       "conversations": "./conversations/index.ts",
+      "qrcode": "https://deno.land/x/qrcode@v2.0.0/mod.ts",
+      "base64": "https://deno.land/std@0.204.0/encoding/base64.ts",
       "grammy": "https://deno.land/x/grammy@v1.33.0/mod.ts",
       "grammy/menu": "https://deno.land/x/grammy_menu@v1.3.0/mod.ts",
       "grammy/conversations": "https://deno.land/x/grammy_conversations@v1.2.0/mod.ts",

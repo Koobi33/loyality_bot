@@ -26,15 +26,15 @@ export async function createEmployeeConversation(
     })
   );
 
-  console.log(res);
-
   const inviteId = res.inviteId;
 
   await ctx.reply(
     `Чтоб пригласить сотрудника с ролью ${role} в кафе ${ctx.session.currentCafe?.cafeName} перешлите ему эту ссылку https://t.me/loyality_employee_bot?start=${inviteId}`,
   );
 
-  await ctx.reply("Финиш ебабоба");
+  await ctx.reply(
+    "Как только сотрудник перейдет по ссылке и запустит нашего бота, он появится в списке Ваших сотрудников и сможет приступить к работе.",
+  );
 
   return;
 }

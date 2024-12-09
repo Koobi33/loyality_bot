@@ -1,6 +1,9 @@
-import { InlineKeyboard, Keyboard } from "grammy";
+import { InlineKeyboard, InputFile, Keyboard } from "grammy";
 import { Menu, MenuRange } from "grammy/menu";
 import { CafeListResponseType, EmployeeType, MyContext, UserRole } from "types";
+import { decodeBase64 } from "jsr:@std/encoding/base64";
+import { qrcode } from "qrcode";
+import { MORDA_ADDRESS } from "../api/constants.ts";
 
 export const menuKeyboard = new Keyboard()
   .text("Создать кафе").row()
@@ -11,6 +14,16 @@ export const editCafeMenu = new Menu<MyContext>("edit-cafe")
   .text(
     "Создать новую рассылку",
     (ctx) => ctx.conversation.enter("createNewsletterConversation"),
+  ).row()
+  .text(
+    "QR code",
+    async (ctx) => {
+      const qr = await qrcode(
+        `${MORDA_ADDRESS}?startapp=${ctx.session.currentCafe?.cafeId}`,
+      );
+      const res = new InputFile(decodeBase64(qr.split(",")[1]));
+      await ctx.replyWithPhoto(res);
+    },
   ).row()
   .submenu("Сотрудники", "cafe-employees").row()
   .text(
@@ -67,7 +80,10 @@ cafeEmployeesKeyboard.dynamic((ctx) => {
   for (let i = 0; i < ctx.session.currentCafe!.employees.length; i++) {
     range
       .text(
-        ctx.session.currentCafe!.employees[i].tgId.toString(),
+        `${
+          ctx.session.currentCafe!.employees[i].employeeName ||
+          ctx.session.currentCafe!.employees[i].tgId.toString()
+        } - ${ctx.session.currentCafe!.employees[i].role}`,
         (ctx) => handleEditEmployee(ctx, ctx.session.currentCafe!.employees[i]),
       )
       .row();

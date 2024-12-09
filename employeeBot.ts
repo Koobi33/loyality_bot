@@ -6,11 +6,12 @@ const bot = new Bot("7398628652:AAFeSjCBCngJN7duCrhd99UmFpqWQMkV71s");
 bot.command("start", async (ctx) => {
   const inviteId = ctx.match;
   if (inviteId) {
-    console.log(inviteId);
+    console.log(ctx.from);
     try {
       await createEmployeeApiRequest({
         inviteId,
         employeeTgId: ctx.from!.id!,
+        visibleEmployeeName: ctx.from?.username!
       });
       await ctx.reply("Добро пожаловать, пупсик!");
     } catch {

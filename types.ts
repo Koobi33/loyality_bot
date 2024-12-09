@@ -15,6 +15,7 @@ export enum UserRole {
 export interface EmployeeType {
   tgId: number;
   role: UserRole;
+  employeeName: string;
 }
 
 // REQUESTS
@@ -38,28 +39,28 @@ export interface CreateEmployeeInviteRequestType {
 }
 
 export interface CreateEmployeeRequestType {
-  inviteId: string,
-  employeeTgId: number
+  inviteId: string;
+  employeeTgId: number;
+  visibleEmployeeName: string;
 }
 
 export interface CreateNewsletterRequestType {
-  cafeId: string,
-  adminTgId: number,
-  message: string
+  cafeId: string;
+  adminTgId: number;
+  message: string;
 }
 
 export interface GetCustomersListRequestType {
-  cafeId: string,
-  masterId: number
+  cafeId: string;
+  masterId: number;
 }
 export interface GetCustomersListResponseType {
-    cafeUsers: {
-      owners: number[],
-      admins: number[],
-      employees: number[],
-      users: number[],
-    }
-  
+  cafeUsers: {
+    owners: number[];
+    admins: number[];
+    employees: number[];
+    users: number[];
+  };
 }
 
 export interface RemoveEmployeeRequestType {
@@ -89,6 +90,7 @@ export interface CafeListResponseType {
   cafeId: string;
   userRole: UserRole;
   purchaseCount: number;
+  availableNoticeCount: number;
   employees: Array<EmployeeType>;
 }
 

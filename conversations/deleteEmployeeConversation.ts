@@ -7,7 +7,6 @@ export async function deleteEmployeeConversation(
 ) {
   await ctx.reply("Удаление сотрудника");
 
-  // Попросить название
   await ctx.reply(
     "Если вы уверены, что хотите удалить сотрудника, напишите 'удалить' в чат",
   );
@@ -21,8 +20,7 @@ export async function deleteEmployeeConversation(
         employeeTgId: ctx.session.currentUser?.tgId!,
       })
     );
-    // Вывести сообщении о том, что создано
-    await ctx.reply("Финиш ебабоба");
+    await ctx.reply(`Сотрудник был успешно удален`);
   }
 
   return;

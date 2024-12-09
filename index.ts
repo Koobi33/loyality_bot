@@ -1,4 +1,4 @@
-import { Bot, GrammyError, HttpError, session } from "grammy";
+import { GrammyError, HttpError, session } from "grammy";
 import { conversations, createConversation } from "grammy/conversations";
 import { fetchCafeListApiRequest } from "api";
 import {

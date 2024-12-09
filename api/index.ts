@@ -60,7 +60,7 @@ const editCafeApiRequest = async (
   data?: EditCafeRequestType,
 ): Promise<null> => {
   const body = JSON.stringify(data);
-  const reqestData = new Request(`${API_ADDRESS}/admin/register-cafe`, {
+  const reqestData = new Request(`${API_ADDRESS}/admin/update-cafe`, {
     method: "POST",
     body,
     signal: AbortSignal.timeout(5000),
@@ -141,7 +141,6 @@ const deleteEmployeeApiRequest = async (
 ): Promise<null> => {
   const body = JSON.stringify(data);
 
-  console.log(body);
   const requestData = new Request(`${API_ADDRESS}/admin/remove-cafe-employee`, {
     method: "POST",
     body,
@@ -160,8 +159,6 @@ const createNewsletterApiRequest = async (
   data: CreateNewsletterRequestType,
 ): Promise<null> => {
   const body = JSON.stringify(data);
-
-  console.log(body);
 
   try {
     const requestData = new Request(
