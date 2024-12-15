@@ -1,6 +1,8 @@
 import { MyContext, MyConversation } from "types";
 import { createNewsletterApiRequest, getCustomersListApiRequest } from "api";
 import { loyalityBot } from "../loyalityBot.ts";
+import { MASTER_BOT_ID } from "../api/constants.ts";
+
 
 export async function createNewsletterConversation(
   conversation: MyConversation,
@@ -12,7 +14,7 @@ export async function createNewsletterConversation(
   }
 
   await ctx.reply(
-    `Введите текст рассылки - его получат все клиенты Вашего кафе. Помните, что вы не можете создавать более ${ctx.session.currentCafe?.availableNoticeCount} рассылок в месяц.`,
+    `Введите текст рассылки - его получат все клиенты Вашего кафе. Помните, что вы не можете создавать более 2 рассылок в месяц. Осталось рассылок: ${ctx.session.currentCafe?.availableNoticeCount} в этом месяце.`,
   );
 
   const message: string = await conversation.form.text();
@@ -28,11 +30,12 @@ export async function createNewsletterConversation(
   const usersList = await conversation.external(() =>
     getCustomersListApiRequest({
       cafeId: ctx.session.currentCafe?.cafeId!,
-      masterId: 0,
+      masterId: MASTER_BOT_ID,
     })
   );
 
   await ctx.reply(`${ctx.session.currentCafe?.cafeName}: ${message}`);
+  console.log(usersList);
   await ctx.reply(
     `Такое сообщение получат ${usersList.cafeUsers.users.length} клиентов Вашего кафе. Чтобы разослать сообщение напишите слово "отправить"`,
   );
@@ -43,8 +46,11 @@ export async function createNewsletterConversation(
     console.log(usersList);
 
     //   for (let i = 0; i < usersList.cafeUsers.users.length; i++) {
-    for (let i = 0; i < usersList.cafeUsers.owners.length; i++) {
-      await loyalityBot.api.sendMessage(usersList.cafeUsers.owners[i], `${ctx.session.currentCafe?.cafeName}: ${message}`);
+    for (let i = 0; i < usersList.cafeUsers.users.length; i++) {
+      await loyalityBot.api.sendMessage(
+        usersList.cafeUsers.users[i],
+        `${ctx.session.currentCafe?.cafeName}: ${message}`,
+      );
     }
 
     // Вывести сообщении о том, что создано

@@ -157,7 +157,7 @@ const deleteEmployeeApiRequest = async (
 // CREATE NEWSLETTER
 const createNewsletterApiRequest = async (
   data: CreateNewsletterRequestType,
-): Promise<null> => {
+): Promise<null | undefined> => {
   const body = JSON.stringify(data);
 
   try {

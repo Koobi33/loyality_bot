@@ -1,7 +1,8 @@
 {
      "tasks": {
-        "dev": "deno -A --watch index.ts",
-        "dev-employee": "deno -A --watch employeeBot.ts"
+        "dev": "deno -A --watch index.ts && deno task dev-employee && deno task dev-loyality",
+        "dev-employee": "deno -A --watch employeeBot.ts",
+        "dev-loyality": "deno -A --watch loyalityBot.ts"
     },
 
     "imports": {
