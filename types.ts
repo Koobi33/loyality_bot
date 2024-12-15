@@ -52,7 +52,7 @@ export interface CreateNewsletterRequestType {
 
 export interface GetCustomersListRequestType {
   cafeId: string;
-  masterId: number;
+  masterId: string;
 }
 export interface GetCustomersListResponseType {
   cafeUsers: {

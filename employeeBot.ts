@@ -1,7 +1,9 @@
 import { Bot } from "grammy";
 import { createEmployeeApiRequest } from "api";
+import "jsr:@std/dotenv/load";
 
-const bot = new Bot("7398628652:AAFeSjCBCngJN7duCrhd99UmFpqWQMkV71s");
+
+const bot = new Bot(Deno.env.get("EMPLOYEE_BOT_KEY")!);
 
 bot.command("start", async (ctx) => {
   const inviteId = ctx.match;

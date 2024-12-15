@@ -1,6 +1,7 @@
 import { Bot } from "grammy";
 import { MyContext } from "types";
+import "jsr:@std/dotenv/load";
 
 export const bot = new Bot<MyContext>(
-    "8031681113:AAFAg2-lb5XkrifsZfWT39HnpalAd6zb0zs",
-  );
+  Deno.env.get("ADMIN_BOT_KEY")!,
+);

@@ -1,11 +1,15 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@std/dotenv@*": "0.225.3",
     "jsr:@std/encoding@*": "1.0.5",
     "npm:qrcode@*": "1.5.4",
     "npm:stream@*": "0.0.3"
   },
   "jsr": {
+    "@std/dotenv@0.225.3": {
+      "integrity": "a95e5b812c27b0854c52acbae215856d9cce9d4bbf774d938c51d212711e8d4a"
+    },
     "@std/encoding@1.0.5": {
       "integrity": "ecf363d4fc25bd85bd915ff6733a7e79b67e0e7806334af15f4645c569fefc04"
     }

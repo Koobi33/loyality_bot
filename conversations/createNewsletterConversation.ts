@@ -1,8 +1,6 @@
 import { MyContext, MyConversation } from "types";
 import { createNewsletterApiRequest, getCustomersListApiRequest } from "api";
 import { loyalityBot } from "../loyalityBot.ts";
-import { MASTER_BOT_ID } from "../api/constants.ts";
-
 
 export async function createNewsletterConversation(
   conversation: MyConversation,
@@ -30,7 +28,7 @@ export async function createNewsletterConversation(
   const usersList = await conversation.external(() =>
     getCustomersListApiRequest({
       cafeId: ctx.session.currentCafe?.cafeId!,
-      masterId: MASTER_BOT_ID,
+      masterId: Deno.env.get("MASTER_BOT_ID")!,
     })
   );
 

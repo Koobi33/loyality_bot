@@ -80,7 +80,11 @@ bot.hears("Список моих кафе", async (ctx) => {
 
   ctx.session.cafeList = data as Array<CafeListResponseType>;
 
-  await ctx.reply("Список Ваших кафе", { reply_markup: cafeListKeyboard });
+  if (!data) {
+    await ctx.reply("Вы еще не создали ни одного кафе.");
+  } else {
+    await ctx.reply("Список Ваших кафе", { reply_markup: cafeListKeyboard });
+  }
 });
 
 // EMPLOYEE LIST

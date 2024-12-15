@@ -13,7 +13,6 @@ import {
   RemoveCafeRequestType,
   RemoveEmployeeRequestType,
 } from "../types.ts";
-import { API_ADDRESS } from "./constants.ts";
 
 const client = Deno.createHttpClient({});
 
@@ -23,14 +22,17 @@ const fetchCafeListApiRequest = async (
 ): Promise<CafeListResponseType[]> => {
   const body = JSON.stringify(data);
 
-  const requestData = new Request(`${API_ADDRESS}/admin/get-all-user-cafes`, {
-    method: "POST",
-    body,
-    signal: AbortSignal.timeout(5000),
-    headers: {
-      "content-type": "application/json",
+  const requestData = new Request(
+    `${Deno.env.get("API_ADDRESS")}/admin/get-all-user-cafes`,
+    {
+      method: "POST",
+      body,
+      signal: AbortSignal.timeout(5000),
+      headers: {
+        "content-type": "application/json",
+      },
     },
-  });
+  );
 
   const request = await fetch(requestData);
   const res = await request.json();
@@ -42,7 +44,7 @@ const createCafeApiRequest = async (
   data?: CreateCafeRequestType,
 ): Promise<CreateCafeResponseType> => {
   const body = JSON.stringify(data);
-  const reqestData = new Request(`${API_ADDRESS}/admin/register-cafe`, {
+  const reqestData = new Request(`${Deno.env.get("API_ADDRESS")}/admin/register-cafe`, {
     method: "POST",
     body,
     signal: AbortSignal.timeout(5000),
@@ -60,7 +62,7 @@ const editCafeApiRequest = async (
   data?: EditCafeRequestType,
 ): Promise<null> => {
   const body = JSON.stringify(data);
-  const reqestData = new Request(`${API_ADDRESS}/admin/update-cafe`, {
+  const reqestData = new Request(`${Deno.env.get("API_ADDRESS")}/admin/update-cafe`, {
     method: "POST",
     body,
     signal: AbortSignal.timeout(5000),
@@ -78,7 +80,7 @@ const deleteCafeApiRequest = async (
   data?: RemoveCafeRequestType,
 ): Promise<null> => {
   const body = JSON.stringify(data);
-  const reqestData = new Request(`${API_ADDRESS}/admin/remove-cafe`, {
+  const reqestData = new Request(`${Deno.env.get("API_ADDRESS")}/admin/remove-cafe`, {
     method: "POST",
     body,
     signal: AbortSignal.timeout(5000),
@@ -98,7 +100,7 @@ const createEmployeeInviteApiRequest = async (
   const body = JSON.stringify(data);
 
   const requestData = new Request(
-    `${API_ADDRESS}/admin/create-employee-invite`,
+    `${Deno.env.get("API_ADDRESS")}/admin/create-employee-invite`,
     {
       method: "POST",
       body,
@@ -120,7 +122,7 @@ const createEmployeeApiRequest = async (
   const body = JSON.stringify(data);
 
   const requestData = new Request(
-    `${API_ADDRESS}/admin/register-cafe-employee`,
+    `${Deno.env.get("API_ADDRESS")}/admin/register-cafe-employee`,
     {
       method: "POST",
       body,
@@ -141,7 +143,7 @@ const deleteEmployeeApiRequest = async (
 ): Promise<null> => {
   const body = JSON.stringify(data);
 
-  const requestData = new Request(`${API_ADDRESS}/admin/remove-cafe-employee`, {
+  const requestData = new Request(`${Deno.env.get("API_ADDRESS")}/admin/remove-cafe-employee`, {
     method: "POST",
     body,
     signal: AbortSignal.timeout(5000),
@@ -162,7 +164,7 @@ const createNewsletterApiRequest = async (
 
   try {
     const requestData = new Request(
-      `${API_ADDRESS}/admin/register-customers-notification`,
+      `${Deno.env.get("API_ADDRESS")}/admin/register-customers-notification`,
       {
         method: "POST",
         body,
@@ -187,7 +189,7 @@ const getCustomersListApiRequest = async (
   const body = JSON.stringify(data);
 
   const requestData = new Request(
-    `${API_ADDRESS}/admin/get-all-cafe-users`,
+    `${Deno.env.get("API_ADDRESS")}/admin/get-all-cafe-users`,
     {
       method: "POST",
       body,

@@ -1,6 +1,7 @@
 import { Bot } from "grammy";
 import { MyContext } from "types";
+import "jsr:@std/dotenv/load";
 
 export const loyalityBot = new Bot<MyContext>(
-    "7866387621:AAEO5IpZtRfYWLybziGemcc7_Op9AcDT_8k",
+  Deno.env.get("CLIENT_BOT_KEY")!,
   );

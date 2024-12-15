@@ -1,8 +1,12 @@
 {
      "tasks": {
-        "dev": "deno -A --watch index.ts && deno task dev-employee && deno task dev-loyality",
-        "dev-employee": "deno -A --watch employeeBot.ts",
-        "dev-loyality": "deno -A --watch loyalityBot.ts"
+        "dev": "deno -A --watch --env-file=.env.dev index.ts && deno task dev-employee && deno task dev-loyality",
+        "dev-employee": "deno -A --watch --env-file=.env.dev employeeBot.ts ",
+        "dev-loyality": "deno -A --watch --env-file=.env.dev loyalityBot.ts",
+
+        "prod": "deno -A --watch --env-file=.env.prod index.ts && deno task prod-employee && deno task prod-loyality",
+        "prod-employee": "deno -A --watch --env-file=.env.prod employeeBot.ts ",
+        "prod-loyality": "deno -A --watch --env-file=.env.prod loyalityBot.ts"
     },
 
     "imports": {

@@ -3,7 +3,6 @@ import { Menu, MenuRange } from "grammy/menu";
 import { CafeListResponseType, EmployeeType, MyContext, UserRole } from "types";
 import { decodeBase64 } from "jsr:@std/encoding/base64";
 import { qrcode } from "qrcode";
-import { MORDA_ADDRESS } from "../api/constants.ts";
 
 export const menuKeyboard = new Keyboard()
   .text("Создать кафе").row()
@@ -19,7 +18,9 @@ export const editCafeMenu = new Menu<MyContext>("edit-cafe")
     "QR code",
     async (ctx) => {
       const qr = await qrcode(
-        `${MORDA_ADDRESS}?startapp=${ctx.session.currentCafe?.cafeId}`,
+        `${
+          Deno.env.get("MORDA_ADDRESS")
+        }?startapp=${ctx.session.currentCafe?.cafeId}`,
       );
       const res = new InputFile(decodeBase64(qr.split(",")[1]));
       await ctx.replyWithPhoto(res);
