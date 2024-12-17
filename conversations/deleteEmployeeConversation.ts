@@ -1,11 +1,12 @@
 import { deleteEmployeeApiRequest } from "api";
 import { MyContext, MyConversation } from "types";
+import { cancelMenu, menuKeyboard } from "keyboards";
 
 export async function deleteEmployeeConversation(
   conversation: MyConversation,
   ctx: MyContext,
 ) {
-  await ctx.reply("Удаление сотрудника");
+  await ctx.reply("Удаление сотрудника", { reply_markup: cancelMenu });
 
   await ctx.reply(
     "Если вы уверены, что хотите удалить сотрудника, напишите 'удалить' в чат",
@@ -21,6 +22,11 @@ export async function deleteEmployeeConversation(
       })
     );
     await ctx.reply(`Сотрудник был успешно удален`);
+  }
+
+  if (answer === "Отмена") {
+    await ctx.reply("Действие отменено", { reply_markup: menuKeyboard });
+    return;
   }
 
   return;

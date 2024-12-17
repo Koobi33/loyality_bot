@@ -3,6 +3,8 @@
   "specifiers": {
     "jsr:@std/dotenv@*": "0.225.3",
     "jsr:@std/encoding@*": "1.0.5",
+    "npm:@grammyjs/parse-mode@^1.10.0": "1.10.0_grammy@1.33.0",
+    "npm:@types/node@*": "22.5.4",
     "npm:qrcode@*": "1.5.4",
     "npm:stream@*": "0.0.3"
   },
@@ -15,6 +17,27 @@
     }
   },
   "npm": {
+    "@grammyjs/parse-mode@1.10.0_grammy@1.33.0": {
+      "integrity": "sha512-ZjbY2Ax0b4Nf8lPz3NV0cWDxUC10kOkzgxws+iTdgG+hAiPQVUnP/oJnAKrW1ZQOWULZYQ4GOR/+aCZHyUuLQA==",
+      "dependencies": [
+        "grammy"
+      ]
+    },
+    "@grammyjs/types@3.17.0": {
+      "integrity": "sha512-e8AR3xQwRAFX248E7Qw/7mIu1OzvoXloJzOBJVtuPKzzL7tGkn5trZAdZUBgGViVQg5ZwVS/x9N2nRrcyH/DfA=="
+    },
+    "@types/node@22.5.4": {
+      "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
+    "abort-controller@3.0.0": {
+      "integrity": "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==",
+      "dependencies": [
+        "event-target-shim"
+      ]
+    },
     "ansi-regex@5.0.1": {
       "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ=="
     },
@@ -47,6 +70,12 @@
     "component-emitter@2.0.0": {
       "integrity": "sha512-4m5s3Me2xxlVKG9PkZpQqHQR7bgpnN7joDMJ4yvVkVXngjoITG76IaZmzmywSeRTeTpc6N6r3H3+KyUurV8OYw=="
     },
+    "debug@4.4.0": {
+      "integrity": "sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==",
+      "dependencies": [
+        "ms"
+      ]
+    },
     "decamelize@1.2.0": {
       "integrity": "sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA=="
     },
@@ -55,6 +84,9 @@
     },
     "emoji-regex@8.0.0": {
       "integrity": "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="
+    },
+    "event-target-shim@5.0.1": {
+      "integrity": "sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ=="
     },
     "find-up@4.1.0": {
       "integrity": "sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==",
@@ -66,6 +98,15 @@
     "get-caller-file@2.0.5": {
       "integrity": "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="
     },
+    "grammy@1.33.0": {
+      "integrity": "sha512-kvQuIBtiPcqNGntsVevjXYBMByIJ3PtOP7swr1zbCg6xY+dNX76f4VX5auKuJNI/sflexPr3L4wNwbTJHu9ocA==",
+      "dependencies": [
+        "@grammyjs/types",
+        "abort-controller",
+        "debug",
+        "node-fetch"
+      ]
+    },
     "is-fullwidth-code-point@3.0.0": {
       "integrity": "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg=="
     },
@@ -73,6 +114,15 @@
       "integrity": "sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==",
       "dependencies": [
         "p-locate"
+      ]
+    },
+    "ms@2.1.3": {
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+    },
+    "node-fetch@2.7.0": {
+      "integrity": "sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==",
+      "dependencies": [
+        "whatwg-url"
       ]
     },
     "p-limit@2.3.0": {
@@ -133,6 +183,22 @@
         "ansi-regex"
       ]
     },
+    "tr46@0.0.3": {
+      "integrity": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw=="
+    },
+    "undici-types@6.19.8": {
+      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    "webidl-conversions@3.0.1": {
+      "integrity": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
+    },
+    "whatwg-url@5.0.0": {
+      "integrity": "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==",
+      "dependencies": [
+        "tr46",
+        "webidl-conversions"
+      ]
+    },
     "which-module@2.0.1": {
       "integrity": "sha512-iBdZ57RDvnOR9AGBhML2vFZf7h8vmBjhoaZqODJBFWHVtKkDmKuHai3cx5PgVMrX5YDNp27AofYbAwctSS+vhQ=="
     },
@@ -176,6 +242,8 @@
     "https://deno.land/x/qrcode/mod.ts": "https://deno.land/x/qrcode@v2.0.0/mod.ts",
     "https://lib.deno.dev/x/grammy@1.x/mod.ts": "https://deno.land/x/grammy@v1.33.0/mod.ts",
     "https://lib.deno.dev/x/grammy@1.x/types.ts": "https://deno.land/x/grammy@v1.33.0/types.ts",
+    "https://lib.deno.dev/x/grammy@^1.20/mod.ts": "https://deno.land/x/grammy@v1.33.0/mod.ts",
+    "https://lib.deno.dev/x/grammy@^1.20/types.ts": "https://deno.land/x/grammy@v1.33.0/types.ts",
     "https://lib.deno.dev/x/grammy@v1/mod.ts": "https://deno.land/x/grammy@v1.33.0/mod.ts",
     "https://lib.deno.dev/x/grammy@v1/types.ts": "https://deno.land/x/grammy@v1.33.0/types.ts"
   },
@@ -225,6 +293,11 @@
     "https://deno.land/x/grammy_menu@v1.3.0/deps.deno.ts": "a94bbf0a453a4b8f0e2fd95b6da254433ecd3a828cabca3bd871558319bd2c7d",
     "https://deno.land/x/grammy_menu@v1.3.0/menu.ts": "e040a4cd2576e3c1f0dc93ca19d4776aecf492cad8e8b6ac7e29e3b19ddd4382",
     "https://deno.land/x/grammy_menu@v1.3.0/mod.ts": "ec3d890cabdb7ee1ea72f5fcd1b0b05a84c208975c34251e8a0e9a595e40713b",
+    "https://deno.land/x/grammy_parse_mode@1.10.0/deps.deno.ts": "cbd2d11cae3053c7245053480eb163f6850475d3cbd69d9855260ede13dff8a0",
+    "https://deno.land/x/grammy_parse_mode@1.10.0/format.ts": "268aa7f6926a66fdd28cd5c314b7701399d50a497cf08a2723dd47a04169ad43",
+    "https://deno.land/x/grammy_parse_mode@1.10.0/hydrate.ts": "735b681d21f2acf3a4bcca13cb0b52edfda81379ec55c716a7be59a2261fae63",
+    "https://deno.land/x/grammy_parse_mode@1.10.0/mod.ts": "58b539ea91fa72c1fd66dd5415b6c4b63104301b07d9daf860bd66343db7062c",
+    "https://deno.land/x/grammy_parse_mode@1.10.0/transformer.ts": "b08e1e9fdc421286a16de28d3c8e4b53ff6cb0af5536809a8dfad24c4b6cc20c",
     "https://deno.land/x/grammy_storages@v2.4.2/free/src/adapter.ts": "0a85a6363b12dd0f6d79d1ca469eb7677082050c2e60592441f929f95621dc0d",
     "https://deno.land/x/grammy_storages@v2.4.2/free/src/mod.ts": "6485c5bf548fc73446f54f397660a59ffcaf0bcc465b6050c2c762848c2c0ba5",
     "https://deno.land/x/grammy_types@v3.17.0/api.ts": "ae04d6628e3d25ae805bc07a19475065044fc44cde0a40877405bc3544d03a5f",
@@ -244,5 +317,10 @@
     "https://deno.land/x/oson@1.0.1/oson.ts": "ec3908ae5c9ceff7bfd869d95a2183b929b9d96fbff44b57d28d3b742d06a4a1",
     "https://deno.land/x/qrcode@v2.0.0/mod.ts": "3e693e8190d5fb4c6ab68a14a1a9473c325d5244fd83240b49cdecdf5fc18a1b",
     "https://deno.land/x/qrcode@v2.0.0/qrcode.js": "138f870978e21843f48d8b0855b69de6ebf430c3ab9f57c3fa2746d6fba45bf1"
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:@grammyjs/parse-mode@^1.10.0"
+    ]
   }
 }

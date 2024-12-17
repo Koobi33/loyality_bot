@@ -3,23 +3,22 @@ import { createEmployeeApiRequest } from "api";
 import "jsr:@std/dotenv/load";
 
 
-const bot = new Bot(Deno.env.get("EMPLOYEE_BOT_KEY")!);
+const employeeBot = new Bot(Deno.env.get("EMPLOYEE_BOT_KEY")!);
 
-bot.command("start", async (ctx) => {
+employeeBot.command("start", async (ctx) => {
   const inviteId = ctx.match;
   if (inviteId) {
-    console.log(ctx.from);
     try {
       await createEmployeeApiRequest({
         inviteId,
         employeeTgId: ctx.from!.id!,
         visibleEmployeeName: ctx.from?.username!
       });
-      await ctx.reply("Добро пожаловать, пупсик!");
+      await ctx.reply("Добро пожаловать!");
     } catch {
-      await ctx.reply("НАХУЙ ПОШЕЛ!");
+      await ctx.reply("Доступ отклонен!");
     }
   }
 });
 
-bot.start();
+employeeBot.start();

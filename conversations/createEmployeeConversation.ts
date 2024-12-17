@@ -1,6 +1,6 @@
 import { createEmployeeInviteApiRequest } from "api";
 import { MyContext, MyConversation, UserRole } from "types";
-import { employeeRoleMenu } from "keyboards";
+import { employeeRoleMenu, menuKeyboard } from "keyboards";
 
 export async function createEmployeeConversation(
   conversation: MyConversation,
@@ -14,8 +14,14 @@ export async function createEmployeeConversation(
     UserRole.Admin,
     UserRole.Employee,
   ], {
-    otherwise: (ctx) =>
-      ctx.reply("Кнопки жми, сука!", { reply_markup: employeeRoleMenu }),
+    otherwise: async (ctx) => {
+      if (ctx.update.message?.text === "Отмена") {
+        await ctx.reply("Действие отменено", { reply_markup: menuKeyboard });
+        return;
+      } else {
+        ctx.reply("Выберите одну из опций", { reply_markup: employeeRoleMenu });
+      }
+    },
   });
   const role: UserRole = response.match as UserRole;
   const res = await conversation.external(() =>
@@ -29,7 +35,7 @@ export async function createEmployeeConversation(
   const inviteId = res.inviteId;
 
   await ctx.reply(
-    `Чтоб пригласить сотрудника с ролью ${role} в кафе ${ctx.session.currentCafe?.cafeName} перешлите ему эту ссылку https://t.me/loyality_employee_bot?start=${inviteId}`,
+    `Чтоб пригласить сотрудника с ролью ${role} в кафе ${ctx.session.currentCafe?.cafeName} перешлите ему эту ссылку ${Deno.env.get("EMPLOYEE_BOT_ADDRESS")}?start=${inviteId}`,
   );
 
   await ctx.reply(

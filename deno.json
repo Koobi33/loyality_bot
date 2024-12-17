@@ -1,15 +1,16 @@
 {
      "tasks": {
-        "dev": "deno -A --watch --env-file=.env.dev index.ts && deno task dev-employee && deno task dev-loyality",
+        "dev": "deno -A --watch --env-file=.env.dev index.ts & deno task dev-employee & deno task dev-loyality",
         "dev-employee": "deno -A --watch --env-file=.env.dev employeeBot.ts ",
         "dev-loyality": "deno -A --watch --env-file=.env.dev loyalityBot.ts",
 
-        "prod": "deno -A --watch --env-file=.env.prod index.ts && deno task prod-employee && deno task prod-loyality",
+        "prod": "deno -A --watch --env-file=.env.prod index.ts & deno task prod-employee & deno task prod-loyality",
         "prod-employee": "deno -A --watch --env-file=.env.prod employeeBot.ts ",
         "prod-loyality": "deno -A --watch --env-file=.env.prod loyalityBot.ts"
     },
 
     "imports": {
+      "@grammyjs/parse-mode": "npm:@grammyjs/parse-mode@^1.10.0",
       "api": "./api/index.ts",
       "types": "./types.ts",
       "keyboards": "./keyboards/index.ts",
@@ -18,6 +19,7 @@
       "base64": "https://deno.land/std@0.204.0/encoding/base64.ts",
       "grammy": "https://deno.land/x/grammy@v1.33.0/mod.ts",
       "grammy/menu": "https://deno.land/x/grammy_menu@v1.3.0/mod.ts",
+      "grammy/parse-mode": "https://deno.land/x/grammy_parse_mode@1.10.0/mod.ts",
       "grammy/conversations": "https://deno.land/x/grammy_conversations@v1.2.0/mod.ts",
       "grammy/freeStorage": "https://deno.land/x/grammy_storages@v2.4.2/free/src/mod.ts"
     }

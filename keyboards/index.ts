@@ -1,6 +1,12 @@
 import { InlineKeyboard, InputFile, Keyboard } from "grammy";
 import { Menu, MenuRange } from "grammy/menu";
-import { CafeListResponseType, EmployeeType, MyContext, UserRole } from "types";
+import {
+  CafeListResponseType,
+  EmployeeType,
+  MyContext,
+  ROLE_MAPPING,
+  UserRole,
+} from "types";
 import { decodeBase64 } from "jsr:@std/encoding/base64";
 import { qrcode } from "qrcode";
 
@@ -8,6 +14,14 @@ export const menuKeyboard = new Keyboard()
   .text("Создать кафе").row()
   .text("Список моих кафе").row()
   .resized();
+
+export const cancelMenu = new Keyboard()
+  .text("Отмена").row();
+
+export const onboardingMenu = new Menu<MyContext>("onboarding")
+  .text("Создать кафе", async (ctx) => {
+    await ctx.conversation.enter("createCafeConversation");
+  }).row();
 
 export const editCafeMenu = new Menu<MyContext>("edit-cafe")
   .text(
@@ -49,7 +63,7 @@ export const editEmployeeMenu = new Menu<MyContext>("edit-employee")
     "Отмена",
     async (ctx) => {
       ctx.session.currentUser = undefined;
-      await ctx.reply("Список Ваших кафе", { reply_markup: cafeListKeyboard });
+      await ctx.reply("Список Ваших кафе:", { reply_markup: cafeListKeyboard });
     },
   )
   .row();
@@ -84,7 +98,7 @@ cafeEmployeesKeyboard.dynamic((ctx) => {
         `${
           ctx.session.currentCafe!.employees[i].employeeName ||
           ctx.session.currentCafe!.employees[i].tgId.toString()
-        } - ${ctx.session.currentCafe!.employees[i].role}`,
+        } - ${ROLE_MAPPING[ctx.session.currentCafe!.employees[i].role]}`,
         (ctx) => handleEditEmployee(ctx, ctx.session.currentCafe!.employees[i]),
       )
       .row();

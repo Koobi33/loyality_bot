@@ -116,3 +116,11 @@ export type MyContext =
   & SessionFlavor<SessionData>
   & ConversationFlavor;
 export type MyConversation = Conversation<MyContext>;
+
+export const ROLE_MAPPING: Record<UserRole, string> = {
+  [UserRole.Admin]: "Администратор",
+  [UserRole.Employee]: "Сотрудник",
+  [UserRole.None]: "Чушпан",
+  [UserRole.Customer]: "Гость",
+  [UserRole.Owner]: "Создатель",
+};
