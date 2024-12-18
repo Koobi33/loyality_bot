@@ -55,7 +55,9 @@ export async function createNewsletterConversation(
     }
 
     // Вывести сообщении о том, что создано
-    await ctx.reply("Рассылка успешно была отправлена!");
+    await ctx.reply("Рассылка успешно была отправлена!", {
+      reply_markup: menuKeyboard,
+    });
   }
   return;
 }

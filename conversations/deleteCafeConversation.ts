@@ -21,7 +21,9 @@ export async function deleteCafeConversation(
         adminTgId: ctx.from?.id!,
       })
     );
-    await ctx.reply("Кафе было успешно удалено.");
+    await ctx.reply("Кафе было успешно удалено.", {
+      reply_markup: menuKeyboard,
+    });
   }
   if (answer === "Отмена") {
     await ctx.reply("Действие отменено", { reply_markup: menuKeyboard });

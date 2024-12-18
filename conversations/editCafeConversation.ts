@@ -22,7 +22,9 @@ export async function editCafeNameConversation(
     })
   );
 
-  await ctx.reply("Название кафе было успешно изменено.");
+  await ctx.reply("Название кафе было успешно изменено.", {
+    reply_markup: menuKeyboard,
+  });
 
   return;
 }
@@ -31,8 +33,14 @@ export async function editCafePurchaseCountConversation(
   conversation: MyConversation,
   ctx: MyContext,
 ) {
-  await ctx.reply("Введите кол-во покупок, необходимых для подарка", { reply_markup: cancelMenu });
-  const cafePurchaseCountContext: number = await conversation.form.number();
+  let cafePurchaseCountContext: number = 0
+  do {
+    await ctx.reply("Введите кол-во покупок, необходимых для подарка", {
+      reply_markup: cancelMenu,
+    });
+
+    cafePurchaseCountContext = await conversation.form.number();
+  } while (cafePurchaseCountContext <= 0);
 
   await conversation.external(() =>
     editCafeApiRequest({
@@ -45,6 +53,7 @@ export async function editCafePurchaseCountConversation(
 
   await ctx.reply(
     "Кол-во покупок, необходимых для подарка, было успешно изменено.",
+    { reply_markup: menuKeyboard },
   );
 
   return;

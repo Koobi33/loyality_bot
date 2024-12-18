@@ -21,7 +21,9 @@ export async function deleteEmployeeConversation(
         employeeTgId: ctx.session.currentUser?.tgId!,
       })
     );
-    await ctx.reply(`Сотрудник был успешно удален`);
+    await ctx.reply(`Сотрудник был успешно удален`, {
+      reply_markup: menuKeyboard,
+    });
   }
 
   if (answer === "Отмена") {

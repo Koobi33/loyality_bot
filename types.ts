@@ -3,6 +3,7 @@ import {
   type ConversationFlavor,
 } from "grammy/conversations";
 import { Context, SessionFlavor } from "grammy";
+import { ParseModeFlavor } from "grammy/parse-mode";
 
 export enum UserRole {
   "None" = "None",
@@ -111,10 +112,10 @@ export interface SessionData {
 }
 
 // Flavor the context type to include sessions.
-export type MyContext =
+export type MyContext = ParseModeFlavor<
   & Context
   & SessionFlavor<SessionData>
-  & ConversationFlavor;
+  & ConversationFlavor>;
 export type MyConversation = Conversation<MyContext>;
 
 export const ROLE_MAPPING: Record<UserRole, string> = {

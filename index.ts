@@ -51,17 +51,13 @@ adminBot.use(createConversation(deleteCafeConversation));
 
 // MENUS and KEYBOARDS
 adminBot.use(onboardingMenu);
-
-adminBot.use(editEmployeeMenu);
-
-adminBot.use(editCafeMenu);
 adminBot.use(cafeListKeyboard);
 
-cafeListKeyboard.register(editCafeMenu);
-editCafeMenu.register(cafeEmployeesKeyboard);
-editEmployeeMenu.register(cafeListKeyboard);
-
-//TODO: -имена новых сотрудников
+cafeListKeyboard.register([
+  editCafeMenu,
+  cafeEmployeesKeyboard,
+  editEmployeeMenu,
+]);
 
 // COMMANDS
 

@@ -73,8 +73,8 @@ export const employeeRoleMenu = new InlineKeyboard()
   .text("Сотрудник", UserRole.Employee).row();
 
 export const cafeListKeyboard = new Menu<MyContext>("cafe-list");
-cafeListKeyboard.dynamic((ctx) => {
-  const range = new MenuRange<MyContext>();
+
+cafeListKeyboard.dynamic((ctx, range) => {
   for (let i = 0; i < ctx.session.cafeList.length; i++) {
     range
       .text(
@@ -83,7 +83,6 @@ cafeListKeyboard.dynamic((ctx) => {
       )
       .row();
   }
-  return range;
 });
 
 export const cafeEmployeesKeyboard = new Menu<MyContext>("cafe-employees")
@@ -122,5 +121,4 @@ async function handleEditCafe(ctx: MyContext, cafeData: CafeListResponseType) {
     `Название кафе: ${cafeData.cafeName}\nПокупок, необходимых для подарка: ${cafeData.purchaseCount}`,
     { reply_markup: editCafeMenu },
   );
-  // await ctx.editMessageReplyMarkup()
 }
