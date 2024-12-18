@@ -5,8 +5,8 @@
         "dev-loyality": "deno -A --watch --env-file=.env.dev loyalityBot.ts",
 
         "prod": "deno -A --env-file=.env.prod index.ts & deno task prod-employee & deno task prod-loyality",
-        "prod-employee": "deno -A --watch --env-file=.env.prod employeeBot.ts ",
-        "prod-loyality": "deno -A --watch --env-file=.env.prod loyalityBot.ts"
+        "prod-employee": "deno -A --env-file=.env.prod employeeBot.ts ",
+        "prod-loyality": "deno -A --env-file=.env.prod loyalityBot.ts"
     },
 
     "imports": {
